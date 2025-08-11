@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Home</title>
+
+  <!-- Fonts (required for the display font) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Your stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- VERTICAL GALLERY (fixed behind content) -->
+  <div class="hero-gallery" aria-hidden="true">
+    <img src="assets/hero1.jpg" alt="" loading="lazy">
+    <img src="assets/hero2.jpg" alt="" loading="lazy">
+    <img src="assets/hero3.jpg" alt="" loading="lazy">
+    <!-- add or remove images as you like -->
+  </div>
+
+  <!-- CENTERED FIXED MENU OVERLAY (this must be present) -->
+  <div class="menu-overlay" role="navigation" aria-label="Primary">
+    <nav class="menu-row">
+      <a href="about.html">About</a>
+      <a href="works.html">Works</a>
+      <a href="sound-engineering.html">Sound engineering</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Optionally include your script file -->
+  <script src="script.js"></script>
+</body>
+</html>
