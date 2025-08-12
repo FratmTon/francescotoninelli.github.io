@@ -1,104 +1,69 @@
-/* ===========================
-   styles.css — Full site CSS
-   Dark theme | Vertical hero gallery
-   Menu fixed & centered (horizontal)
-   Gapless 16:9 images
-   =========================== */
-
-/* ---- Root variables ---- */
-:root{
+:root {
   --bg: #0b0b0c;
-  --panel: #101012;
-  --muted: #9aa3ad;
-  --accent: #00bfff;
   --text: #e9eef2;
-  --maxw: 1100px;
-  --ff-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  --ff-display: "Oswald", var(--ff-sans);
+  --accent: #00bfff;
+  --ff-body: 'Libre Baskerville', serif;
 }
 
-/* ---- Reset & base ---- */
-*{box-sizing:border-box; margin:0; padding:0}
-html,body{height:100%}
-body{
-  font-family:var(--ff-sans);
-  background:linear-gradient(180deg,var(--bg),#060606);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.55;
-  overflow-x:hidden;
+/* Reset */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  font-family: var(--ff-body);
+  background: linear-gradient(180deg, var(--bg), #060606);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* images */
-img{ display:block; max-width:100%; height:auto }
+/* Images */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
-/* link defaults */
-a{ color:var(--accent); text-decoration:none }
-
-/* ---- Hero gallery (fixed, behind content) ---- */
-.hero-gallery{
+/* Hero Gallery */
+.hero-gallery {
   position: fixed;
-  inset: 0;                      /* fill viewport */
+  inset: 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
   overflow-y: auto;
-  overflow-x: hidden;
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
-  z-index: 0;                     /* behind overlay */
-  background: #000;               /* safety background while images load */
+  z-index: 0;
 }
-
-/* optional thin scrollbar for gallery */
-.hero-gallery::-webkit-scrollbar{ width: 8px; }
-.hero-gallery::-webkit-scrollbar-track{ background: rgba(0,0,0,0.08); }
-.hero-gallery::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.05); border-radius:6px; }
-
-/* gapless, 16:9-aware image panels */
-.hero-gallery img{
+.hero-gallery img {
   width: 100vw;
-  height: auto;
-  aspect-ratio: 16 / 9;           /* hint to browser */
-  object-fit: cover;              /* crop nicely if needed */
-  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   scroll-snap-align: start;
-  user-select: none;
-  pointer-events: none;           /* allow touches/scrolling through images */
-  max-height: 85vh;               /* slightly shorter than full height */
-  margin: 0;                      /* no gap between images */
-  /* vertically center the image content inside the image box */
+  max-height: 85vh;
+  margin: 0;
   object-position: center center;
 }
 
-/* ---- Centered fixed menu overlay (horizontal line) ----
-     This is the main change: menu sits exactly in the center
-     and does not scroll. No colored box — just the display font
-     with subtle text-shadow for legibility on photos.
-*/
+/* Menu Overlay */
 .menu-overlay {
   position: fixed;
-  inset: 0;                       /* full viewport so centering is easy */
+  inset: 0;
   display: flex;
-  align-items: center;            /* vertical center */
-  justify-content: center;        /* horizontal center */
-  z-index: 30;                    /* above gallery but below other UI if needed */
-  pointer-events: none;           /* disable pointer events except on links */
-}
-
-/* The horizontal row of links */
-.menu-row{
-  pointer-events: auto;           /* enable clicks on the links */
-  display: flex;
-  flex-direction: row;
-  gap: clamp(28px, 6vw, 64px);
   align-items: center;
   justify-content: center;
-  background: transparent;        /* no colored box */
+  z-index: 30;
+  pointer-events: none;
 }
-
-/* Link style: Oswald display font, refined size, text-shadow for legibility */
+.menu-row {
+  pointer-events: auto;
+  display: flex;
+  gap: clamp(28px, 6vw, 64px);
+}
 .menu-row a {
   font-family: var(--ff-body);
   font-weight: 700;
@@ -108,110 +73,17 @@ a{ color:var(--accent); text-decoration:none }
   text-shadow: 0 1px 0 rgba(0,0,0,0.6);
   padding: 2px 4px;
   transition: color .16s ease, transform .16s ease;
-  text-transform: uppercase; /* Make all menu text uppercase */
+  text-transform: uppercase;  /* UPPERCASE menu items */
 }
-
-
-/* hover/focus effect (accent color + slight lift) */
 .menu-row a:hover,
-.menu-row a:focus{
+.menu-row a:focus {
   color: var(--accent);
   transform: translateY(-3px);
-  outline: none;
-  text-shadow:
-    0 1px 0 rgba(0,0,0,0.75),
-    0 16px 36px rgba(0,191,255,0.06);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.75), 0 16px 36px rgba(0,191,255,0.06);
 }
 
-/* small hint text below the row (optional). Place inside .menu-overlay if wanted */
-.menu-hint{
-  margin-top: 10px;
-  text-align:center;
-  color:var(--muted);
-  font-size:0.95rem;
+/* Accessibility focus */
+a:focus, button:focus {
+  outline: 3px solid rgba(0,191,255,0.12);
+  outline-offset: 2px;
 }
-
-/* ---- Other page layout (keeps your existing structure) ---- */
-
-.container{
-  max-width:var(--maxw);
-  margin:0 auto;
-  padding:40px 20px;
-}
-
-/* header for non-home pages (sticky but semi-transparent) */
-.site-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  padding:14px 20px;
-  position:sticky;
-  top:0;
-  z-index:60;
-  background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.08));
-  border-bottom:1px solid rgba(255,255,255,0.03);
-  backdrop-filter: blur(6px);
-}
-.brand h1{ font-size:1rem; color:var(--text) }
-
-/* sections */
-.section{ padding:48px 20px; border-bottom:1px solid rgba(255,255,255,0.03) }
-.section h2{ color:var(--accent); margin:0 0 12px }
-
-/* About */
-.about-wrap{ display:flex; gap:30px; align-items:center }
-.about-photo{ flex:0 0 220px; border-radius:12px; overflow:hidden; padding:6px; background:linear-gradient(180deg,#0f0f10,#0b0b0c) }
-.about-photo img{ display:block; width:100%; border-radius:8px }
-.about-text{ flex:1; color:var(--text) }
-
-/* Works list */
-.works-list{ display:flex; flex-direction:column; gap:26px; padding:10px 4px }
-.works-list a{
-  display:block; font-size:clamp(1.4rem, 3.6vw, 2.2rem); font-weight:700;
-  color:var(--text); padding:18px 20px; border-radius:12px;
-  text-decoration:none; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
-  transition:transform .18s ease, box-shadow .18s ease;
-}
-.works-list a:hover{ transform:translateY(-6px); color:var(--accent); box-shadow: 0 18px 40px rgba(0,0,0,0.6) }
-
-/* Work single page */
-.work-meta{ color:var(--muted); margin:12px 0 22px }
-.work-body{ color:#dfe7eb; line-height:1.8 }
-
-/* Sound engineering */
-.embed-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px }
-.embed-card{ background:var(--panel); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.02) }
-
-/* Contact */
-.contact-grid{ display:flex; gap:30px; align-items:center }
-.contact-left{ flex:1 }
-.contact-right{ flex:0 0 260px; border-radius:12px; overflow:hidden }
-
-/* footer */
-.site-footer{ text-align:center; color:var(--muted); padding:26px 14px; font-size:0.95rem }
-
-/* accessibility focus */
-a:focus, button:focus{ outline:3px solid rgba(0,191,255,0.12); outline-offset:2px }
-
-/* ---- Responsive behaviors ---- */
-@media (max-width:1000px){
-  .container{ padding:28px 18px }
-  .about-photo{ flex:0 0 180px }
-}
-
-/* on small screens the centered row converts to a vertical stack with a subtle backdrop */
-@media (max-width:640px){
-  .menu-row{
-    flex-direction: column;
-    gap: 18px;
-    padding: 12px 18px;
-    background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.08));
-    border-radius: 12px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-  }
-  .menu-row a{ font-size: clamp(1.05rem, 6vw, 1.6rem); }
-  .hero-gallery img{ object-position: center 30%; } /* adjust focal point */
-  .contact-right{ width:100% }
-}
-
