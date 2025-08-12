@@ -99,20 +99,18 @@ a{ color:var(--accent); text-decoration:none }
 }
 
 /* Link style: Oswald display font, refined size, text-shadow for legibility */
-.menu-row a{
-  font-family: var(--ff-display);
-  font-weight: 500;
-  font-size: clamp(1.4rem, 4.2vw, 2.6rem);
-  color: var(--text);
-  text-decoration: none;
-  padding: 4px 6px;
+.menu-row a {
+  font-family: var(--ff-body);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 5.5vw, 3rem);
   letter-spacing: 0.02em;
+  color: var(--text);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+  padding: 2px 4px;
   transition: color .16s ease, transform .16s ease;
-  text-shadow:
-    0 1px 0 rgba(0,0,0,0.6),
-    0 10px 30px rgba(0,0,0,0.45);  /* soft deep shadow for clarity */
-  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase; /* Make all menu text uppercase */
 }
+
 
 /* hover/focus effect (accent color + slight lift) */
 .menu-row a:hover,
@@ -216,3 +214,4 @@ a:focus, button:focus{ outline:3px solid rgba(0,191,255,0.12); outline-offset:2p
   .hero-gallery img{ object-position: center 30%; } /* adjust focal point */
   .contact-right{ width:100% }
 }
+
