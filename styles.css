@@ -81,7 +81,7 @@ img {
 .menu-row {
   pointer-events: auto;
   display: flex;
-  gap: clamp(16px, 4vw, 40px);
+  gap: clamp(20px, 4vw, 80px);
 }
 .menu-row a {
   font-family: var(--ff-body);
@@ -107,3 +107,4 @@ a:focus, button:focus {
   outline: 3px solid rgba(0,191,255,0.12);
   outline-offset: 2px;
 }
+
