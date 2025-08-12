@@ -97,14 +97,17 @@ img {
 }
 .menu-row a:hover,
 .menu-row a:focus {
-  color: var(--accent);
   transform: translateY(-3px);
+  /* Removed color change */
   text-shadow: 0 1px 0 rgba(0,0,0,0.75), 0 16px 36px rgba(0,191,255,0.06);
+  cursor: pointer;
 }
+
 
 /* === ACCESSIBILITY FOCUS === */
 a:focus, button:focus {
   outline: 3px solid rgba(0,191,255,0.12);
   outline-offset: 2px;
 }
+
 
