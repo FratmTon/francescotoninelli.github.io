@@ -1,11 +1,23 @@
+/* === FONT FACE === */
+@font-face {
+  font-family: 'Times New Roman MT Condensed';
+  src: url('fonts/Times New Roman MT Condensed.woff2') format('woff2'),
+       url('fonts/Times New Roman MT Condensed.woff') format('woff'),
+       url('fonts/Times New Roman MT Condensed.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* === ROOT VARIABLES === */
 :root {
   --bg: #0b0b0c;
   --text: #e9eef2;
   --accent: #00bfff;
-  --ff-body: 'Libre Baskerville', serif;
+  --ff-body: 'Times New Roman MT Condensed', serif;
 }
 
-/* Reset */
+/* === RESET === */
 * {
   margin: 0; padding: 0; box-sizing: border-box;
 }
@@ -21,14 +33,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Images */
+/* === IMAGES === */
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-/* Hero Gallery */
+/* === HERO GALLERY === */
 .hero-gallery {
   position: fixed;
   inset: 0;
@@ -38,11 +50,13 @@ img {
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
   z-index: 0;
+
+  /* Hide vertical scrollbar but keep scrolling */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
-  :-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
 }
+.hero-gallery::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 .hero-gallery img {
   width: 100vw;
@@ -54,7 +68,7 @@ img {
   object-position: center center;
 }
 
-/* Menu Overlay */
+/* === MENU OVERLAY === */
 .menu-overlay {
   position: fixed;
   inset: 0;
@@ -67,18 +81,18 @@ img {
 .menu-row {
   pointer-events: auto;
   display: flex;
-  gap: clamp(20px, 5vw, 50px);
+  gap: clamp(16px, 4vw, 40px);
 }
 .menu-row a {
   font-family: var(--ff-body);
-  font-weight: 700;
+  font-weight: normal; /* you can try 400 or 500 if you have more weights */
   font-size: clamp(1.2rem, 4vw, 2rem);
   letter-spacing: 0.02em;
   color: var(--text);
   text-shadow: 0 1px 0 rgba(0,0,0,0.6);
   padding: 2px 4px;
   transition: color .16s ease, transform .16s ease;
-  text-transform: uppercase;  /* UPPERCASE menu items */
+  text-transform: uppercase;
   text-decoration: none;
 }
 .menu-row a:hover,
@@ -88,10 +102,8 @@ img {
   text-shadow: 0 1px 0 rgba(0,0,0,0.75), 0 16px 36px rgba(0,191,255,0.06);
 }
 
-/* Accessibility focus */
+/* === ACCESSIBILITY FOCUS === */
 a:focus, button:focus {
   outline: 3px solid rgba(0,191,255,0.12);
   outline-offset: 2px;
 }
-
-
