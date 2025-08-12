@@ -38,6 +38,11 @@ img {
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
   z-index: 0;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  :-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 }
 .hero-gallery img {
   width: 100vw;
@@ -88,4 +93,5 @@ a:focus, button:focus {
   outline: 3px solid rgba(0,191,255,0.12);
   outline-offset: 2px;
 }
+
 
