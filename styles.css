@@ -112,9 +112,38 @@ a:focus, button:focus {
   outline-offset: 2px;
 }
 
+/* === ABOUT PAGE === */
+.about-container {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text);
+  padding: 40px;
+  gap: 40px;
+}
 
+.about-image img {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
 
+.about-text {
+  max-width: 600px;
+}
 
+.about-text h1 {
+  font-family: var(--ff-body);
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
 
-
-
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
