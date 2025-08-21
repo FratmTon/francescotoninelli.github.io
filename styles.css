@@ -1,115 +1,66 @@
-/* === FONT FACE === */
-@font-face {
-  font-family: 'Times New Roman MT Condensed';
-  src: url('fonts/Times New Roman MT Condensed.woff2') format('woff2'),
-       url('fonts/Times New Roman MT Condensed.woff') format('woff'),
-       url('fonts/Times New Roman MT Condensed.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* === ROOT VARIABLES === */
+/* === VARIABLES === */
 :root {
-  --bg: #0b0b0c;
-  --text: #e9eef2;
-  --accent: #00bfff;
   --ff-body: 'Times New Roman MT Condensed', serif;
+  --accent: #8B0000; /* deep red, can be changed later */
 }
 
-/* === RESET === */
+/* === GENERAL RESET === */
 * {
-  margin: 0; padding: 0; box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-html, body {
-  height: 100%;
-}
+
 body {
   font-family: var(--ff-body);
-  background: linear-gradient(180deg, var(--bg), #060606);
-  color: var(--text);
-  overflow-x: hidden;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  background: #fff;   /* default white background */
+  color: #000;        /* default black text */
 }
 
-/* === IMAGES === */
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+/* === HOMEPAGE OVERRIDE === */
+body.home {
+  background: #000;   /* black background for homepage */
+  color: #fff;        /* white text */
+  overflow: hidden;   /* prevent scrollbar on homepage if needed */
 }
 
-/* === HERO GALLERY === */
+/* === HERO GALLERY (HOMEPAGE) === */
 .hero-gallery {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
+  height: 100vh;
+  overflow-y: scroll;
   scroll-snap-type: y mandatory;
-  -webkit-overflow-scrolling: touch;
-  z-index: 0;
+}
 
-  /* Hide vertical scrollbar but keep scrolling */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-}
-.hero-gallery::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
 .hero-gallery img {
-  width: 100vw;
-  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: 95vh;
   object-fit: cover;
   scroll-snap-align: start;
-  max-height: 85vh;
-  margin: 0;
-  object-position: center center;
+  display: block;
 }
 
-/* === MENU OVERLAY === */
+/* === FIXED MENU === */
 .menu-overlay {
   position: fixed;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 30;
-  pointer-events: none;
-}
-.menu-row {
-  pointer-events: auto;
-  display: flex;
-  gap: clamp(20px, 4vw, 80px);
+  gap: 2rem;
+  z-index: 10;
 }
 
-.menu-row a {
-  font-family: var(--ff-body);
-  font-weight: normal;
-  font-size: clamp(1.2rem, 4vw, 2rem);
-  letter-spacing: 0.02em;
-  color: var(--text); /* stays white */
-  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
-  padding: 2px 4px;
-  transition: transform .16s ease; /* color transition removed */
-  text-transform: uppercase;
+.menu-overlay a {
   text-decoration: none;
+  font-size: 2rem;
+  font-family: var(--ff-body);
+  text-transform: uppercase;
+  color: inherit; /* follows body text color */
+  transition: transform 0.3s ease;
 }
 
-.menu-row a:hover,
-.menu-row a:focus {
-  transform: translateY(-3px);
-  text-shadow: 0 1px 0 rgba(0,0,0,0.75), 0 16px 36px rgba(0,191,255,0.06);
-  cursor: pointer;
-}
-
-
-
-/* === ACCESSIBILITY FOCUS === */
-a:focus, button:focus {
-  outline: 3px solid rgba(0,191,255,0.12);
-  outline-offset: 2px;
+.menu-overlay a:hover {
+  transform: translateY(-5px);
 }
 
 /* === ABOUT PAGE === */
@@ -118,8 +69,8 @@ a:focus, button:focus {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background: var(--bg);
-  color: var(--text);
+  background: #fff;
+  color: #000;
   padding: 40px;
   gap: 40px;
 }
@@ -137,7 +88,6 @@ a:focus, button:focus {
 }
 
 .about-text h1 {
-  font-family: var(--ff-body);
   font-size: 2rem;
   margin-bottom: 20px;
   text-transform: uppercase;
